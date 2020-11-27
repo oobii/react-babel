@@ -32,3 +32,51 @@ const data =
       ]
   }
 ];
+
+function Recipe(props) {
+    return (
+        <div>
+            <p>{props.name}</p>
+            <ul>
+               {props.ingredients.map((ingredient, i) => (
+                   <li>
+                   {ingredient.name}
+                   </li>
+               ))
+               } 
+            </ul>
+            </div>
+        
+    )
+
+}
+
+function Menu(props) {
+    return (
+        <article>
+            <header>
+            <h1>{props.title}</h1>
+            {props.title}
+            </header>
+            <div className="recipes">
+            {
+                props.recipes.map((recipe, i) => {
+                    return (
+                        <Recipe ingredients={recipe.ingredients} name={recipe.name}/>
+                    ) 
+                }
+                    
+                )
+        }
+
+            
+            </div>
+        </article>
+    );
+
+}
+
+ReactDOM.render(
+  <Menu recipes={data} title='Delicious Recipes' />,
+  document.getElementById('root')
+);
